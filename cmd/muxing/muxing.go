@@ -75,8 +75,7 @@ func headersSumHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	sum := a + b
 	sumStr := strconv.Itoa(sum)
-
-	fmt.Fprintf(w, "\"a+b\": \"%s\"", sumStr)
+	w.Header().Add("a+b", fmt.Sprint(sumStr))
 }
 
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
